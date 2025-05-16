@@ -21,7 +21,6 @@ Follow these steps to set up and use this template in your Obsidian vault:
 3. **Add the Template to Your Vault**
 
    * Copy the contents of the provided `zotero_integration.md` file into your vault’s `Templates` folder (or any folder you prefer).
-   * In Obsidian, set up your core Templates plugin (or Templater) to point to this file.
 
 --- 
 
