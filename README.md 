@@ -2,6 +2,8 @@
 
 This repository contains a ready-to-use Obsidian note template for exporting Zotero metadata and annotations into Obsidian, with enhanced support for the Admonition plugin. By leveraging Admonition instead of default callouts, this template avoids common rendering issues and improves compatibility across themes.
 
+> **NOTE:** Install [_Admonition_ Plugin](https://github.com/javalent/admonitions) from Obsidian’s third-party plugin interface and enable it. This will ensure the template is consistent on all themes with minimal bugs or glitches.
+
 ## 🚀 Features
 
 * **YAML Front Matter**: Automatically generates standardized front matter with metadata fields such as title, authors, year, publisher, keywords, DOI, and more.
