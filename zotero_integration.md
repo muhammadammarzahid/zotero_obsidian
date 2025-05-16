@@ -32,7 +32,7 @@ citekey: {{citekey}}
 {% persist "annotations" %}
 {%-
     set zoteroColors = {
-	    "#2ea8e5": "blue",
+<strike>	    "#</strike>2ea8e5": "blue",
         "#5fb236": "green",
         "#a28ae5": "purple",
         "#ff6666": "red",
@@ -82,25 +82,41 @@ citekey: {{citekey}}
 {#- INSERT ANNOTATIONS -#}
 {#- Loops through each of the available colors and only inserts matching annotations -#}
 {#- This is a workaround for inserting categories in a predefined order (instead of using groupby & the order in which they appear in the PDF) -#}
+
 {%- for color, heading in colorHeading -%}
 {%- for entry in newAnnotations | filterby ("customColor", "startswith", color) -%}
 {%- set annot = entry.annotation -%}
+
 {%- if entry and loop.first %}
+
 ### {{colorHeading[color]}}
 {%- endif %}
-> [!quote{{"|" + color if color != "other"}}]+ {{calloutHeader(annot.type)}} ([page. {{annot.pageLabel}}](zotero://open-pdf/library/items/{{annot.attachment.itemKey}}?page={{annot.pageLabel}}&annotation={{annot.id}}))
+
+```ad-quote
+title: {{calloutHeader(annot.type)}} 
+
+([page. {{annot.pageLabel}}](zotero://open-pdf/library/items/{{annot.attachment.itemKey}}?page={{annot.pageLabel}}&annotation={{annot.id}}))
+
 {%- if annot.annotatedText %}
-> {{annot.annotatedText|nl2br}} {% if annot.hashTags %}{{annot.hashTags}}{% endif -%}
+ {{annot.annotatedText|nl2br}} {% if annot.hashTags %}{{annot.hashTags}}{% endif -%}
 {%- endif %}
+
 {%- if annot.imageRelativePath %}
-> ![[{{annot.imageRelativePath}}]]
+ ![[{{annot.imageRelativePath}}]]
 {%- endif %}
+
 {%- if annot.ocrText %}
-> {{annot.ocrText}}
+ {{annot.ocrText}}
 {%- endif %}
+
 {%- if annot.comment %}
-> - **{{annot.comment|nl2br}}**
+ - **{{annot.comment|nl2br}}**
 {%- endif -%}
+
+-
+```
+
+
 {%- endfor -%}
 {%- endfor -%}
 {% endif %}
